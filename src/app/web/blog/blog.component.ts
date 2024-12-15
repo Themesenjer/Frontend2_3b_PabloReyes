@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-blog',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss'
 })

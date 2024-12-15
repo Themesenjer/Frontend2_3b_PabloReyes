@@ -8,7 +8,8 @@ import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'app-layout',
-    templateUrl: './app.layout.component.html'
+    templateUrl: './app.layout.component.html',
+    standalone: false
 })
 export class AppLayoutComponent implements OnDestroy {
 

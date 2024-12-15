@@ -1,3 +1,75 @@
 <div class="card">
     <h1>Categoria</h1>
+
+    <p-button (click)="mostrarDialog()" label="Show" />
+<p-dialog
+    header="Header"
+    [(visible)]="dialog_visible"
+    [modal]="true"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    class="p-fluid">
+
+    <form [formGroup]="categoriaForm">
+    <div class="field">
+        <label for="name">Nombre</label>
+        <input type="text" pInputText id="name" required autofocus formControlName="nombre"/>
+        <small class="ng-dirty ng-invalid">El campo del nombre es obligatorio.</small>
+    </div>
+
+    <div class="field">
+        <label for="det">Detalle</label>
+        <input type="text" pImputText id="det" required formControlName="detalle"/>
+    </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="dialog_visible=false"></button>
+                <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" (click)="guardarCayegoria()"></button>
+            </ng-template>
+
+</p-dialog>
+
+    <p-table [value]="categorias" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplete="header">
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>DETALLE</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-categoria>
+            <tr>
+                <td>{{ categoria.id }}</td>
+                <td>{{ categoria.nombre }}</td>
+                <td>{{ categoria.detalle }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <ul>
+        @for (cat of categorias; track $index){
+            <li>{{cat.nombre}} - {{cat.detalle}}</li>
+        }
+    </ul>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>DETALLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (cat of categorias; track $index){
+                <tr>
+                    <td>{{cat.id}}</td>
+                    <td>{{cat.nombre}}</td>
+                    <td>{{cat.detalle}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
